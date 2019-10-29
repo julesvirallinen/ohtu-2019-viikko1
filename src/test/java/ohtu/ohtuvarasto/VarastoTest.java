@@ -65,4 +65,67 @@ public class VarastoTest {
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
 
+    @Test
+    public void varastollaEiOleNegatiivinenTilavuus() {
+        Varasto negatiivinen = new Varasto(-5);
+        assertEquals(0, negatiivinen.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void EiVoiPoistaaNegatiivista() {
+        varasto.otaVarastosta(-5);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void EiVoiLisataNegatiivista() {
+        varasto.lisaaVarastoon(-5);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void EiVoiTayttaaYliTilavuuden() {
+        varasto.lisaaVarastoon(100);
+        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void SaldoTyhjeneeJosPoistoLiianIso() {
+        varasto.lisaaVarastoon(10);
+        varasto.otaVarastosta(20);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+
+
+    @Test
+    public void alkuSaldoLiianPieniTilavuus(){
+        Varasto saldoVarasto = new Varasto(-5, 10);
+        assertEquals(saldoVarasto.getTilavuus(), 0, vertailuTarkkuus);
+    }
+
+    @Test
+    public void alkuSaldoPienempiTilavuuskuinSaldo(){
+        Varasto saldoVarasto = new Varasto(5, 10);
+        assertEquals(saldoVarasto.getSaldo(), 5, vertailuTarkkuus);
+    }
+
+    @Test
+    public void alkuSaldoPienempiKuinNolla(){
+        Varasto saldoVarasto = new Varasto(5, -10);
+        assertEquals(saldoVarasto.getSaldo(), 0, vertailuTarkkuus);
+    }
+
+    @Test
+    public void alkuSaldoMahtuu(){
+        Varasto saldoVarasto = new Varasto(10, 5);
+        assertEquals(saldoVarasto.getSaldo(), 5, vertailuTarkkuus);
+    }
+
+    @Test
+    public void merkkijonoEsityToimii(){
+        varasto.lisaaVarastoon(5);
+        assertEquals(varasto.toString(), "saldo = 5.0, vielä tilaa 5.0");
+    }
+
 }
