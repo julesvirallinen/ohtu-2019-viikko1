@@ -1,5 +1,6 @@
 *.tmp
 /build
-/.gradle
+.gradle
+/gradle
 gradle.properties
 /.idea
