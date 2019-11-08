@@ -1,0 +1,9 @@
+plugins:
+  checkstyle:
+    enabled: true
+
+  plugins:
+  checkstyle:
+    enabled: true
+    config:
+      file: "config/checkstyle/checkstyle.xml"
