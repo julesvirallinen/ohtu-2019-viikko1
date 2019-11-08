@@ -1,7 +1,3 @@
-plugins:
-  checkstyle:
-    enabled: true
-
   plugins:
   checkstyle:
     enabled: true
