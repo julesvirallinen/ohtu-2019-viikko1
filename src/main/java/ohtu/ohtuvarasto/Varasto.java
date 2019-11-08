@@ -28,8 +28,7 @@ public class Varasto {
     }
 
     private void setAlkuTilavuus(double tilavuus) {
-        if (tilavuus > 0.0) 
-        {
+        if (tilavuus > 0.0) {
             this.tilavuus = tilavuus;
             
         } else { // virheellinen, nollataan
